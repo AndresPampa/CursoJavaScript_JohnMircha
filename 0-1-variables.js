@@ -110,4 +110,23 @@ ul3 += "<li>Otoño</li>";
 ul3 += "<li>Invierno</li>";
 ul3 += "<li>Verano</li>";
 ul3 += "</ul>";
+//-------------------------------------------------->| NUMEROS |<--------------------------------------------------
+
+let a = 2;
+let b = new Number(1);
+let c = 7.19;
+let d = "5.6";
+
+console.log(typeof d, typeof c)
+console.log(a,b);
+console.log(c.toFixed(1));
+console.log(c.toFixed(5));
+console.log(parseInt(c));
+console.log(parseFloat(c));
+console.log(parseInt(d));
+console.log(a + b);
+console.log((c + parseInt(d)).toFixed(3));
+console.log((c + parseFloat(d)).toFixed(3));
+
+//-------------------------------------------------->| NUMEROS |<--------------------------------------------------
 
