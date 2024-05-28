@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos JavaScript</title>
+</head>
+<body>
+    <h1>Fundamentos JavaScript</h1>
+    <script>
+        //-------------------------------------------------->| Codigo javascript |<--------------------------------------------------
+        var primerPalabra = "hola Mundo";
+        let hello = 3;
+        console.log(hello);
+        console.log(primerPalabra);
+        console.log(window);//el objeto que que contiene todo el navegador
+        //Scope global el alcance del todo el docuemnto
+        //Ambito de bloque
+        var musica = "rock";
+        console.log("Variable musica antes del bloque", musica);
+        //COmentarios // o /**/
+        //Esto es un bloque
+        {
+            var musica = 'Pop'
+            console.log("Variable musica dentro del bloque", musica);
+        }
+
+        console.log("Variable musica Despues del bloque", musica);
+
+        //UTILIZAR LET
+        console.log("++++++++++++++++++++++++++++++++++++++++")
+        let musica2 = "rock";
+        console.log("Variable musica antes del bloque", musica);
+        //COmentarios // o /**/
+        //Esto es un bloque
+        {
+            let musica2 = 'Pop'
+            console.log("Variable musica dentro del bloque", musica);
+        }
+        console.log("Variable musica Despues del bloque", musica);
+
+        const PI = 3.1416;
+        console.log(PI);
+        //No puedo definir constantes vacias
+
+        let objeto = {
+            nombre: "John",
+            edad: 35,
+        }
+
+        let colores = ["Blanco", "negro", "Azul"];
+        console.log(objeto);
+        console.log(colores);
+
+
+
+
+    </script>
+    <ul>
+        <li>Primavera</li>
+        <li>Otoño</li>
+        <li>Invierno</li>
+        <li>Verano</li>
+    </ul>
+</body>
+</html>
