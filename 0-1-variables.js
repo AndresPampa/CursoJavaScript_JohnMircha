@@ -186,12 +186,56 @@ console.log(noEsUnNumero);
 
 //-------------------------------------------------->| FUNCIONES |<--------------------------------------------------
 
+//Las funciones se consideran objetos. 
+
+//Funciones declaradas
+function estoEsUnaFuncion(){
+    console.log("Mi primer funcion declarada");
+}
+//Invocamos la funcion
+// estoEsUnaFuncion();
 
 
+function unaFuncionQueDevuelveValores(){
+    console.log('uno');
+    return 19; //A penas encuentra un return ignora todas las lineas de abajo
+    return "La funcion retorno una cadena de texto";
+}
+let valorDeFuncion = unaFuncionQueDevuelveValores();
+console.log(valorDeFuncion);
+
+function saludar(nombre='Desconocido', edad= 0){
+    console.log(`Hola ${nombre} que tiene ${edad} años`);
+}
+
+saludar('pampa', 35);
+saludar()
 
 
+//Funciones declaradas VS Funciones expresadas
 
+funcionDeclarada()
 
+function funcionDeclarada(){
+    console.log("Esto es una funcion declarada, puede invocarse en cualquier parte del codigo, incluso antes de la declaracion de la funcion");
+}
+
+funcionDeclarada()
+
+//Funciones expresadas
+
+//Lo que mas se usa es el const
+// funcionExpresada() //cannot acces 'funcionExpresada before initialization
+//Funcion anonima
+const funcionExpresada = function(){
+    console.log("Esto es una funcion expresada");
+    console.log("Una funcion que se le ha asignado como valor a una variable");
+    console.log('Si invocamos esta funcion antes de su definicion, js nos dira....');
+}
+
+funcionExpresada()
+
+//-------------------------------------------------->| Arreglos(Arrays) |<--------------------------------------------------
 
 
 
