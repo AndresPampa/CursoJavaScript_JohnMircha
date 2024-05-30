@@ -128,5 +128,95 @@ console.log(a + b);
 console.log((c + parseInt(d)).toFixed(3));
 console.log((c + parseFloat(d)).toFixed(3));
 
-//-------------------------------------------------->| NUMEROS |<--------------------------------------------------
+//-------------------------------------------------->| BOOLEAN |<--------------------------------------------------
+
+let verdadero = true;
+let falso = false;
+let v = new Boolean(true);
+let f = new Boolean(false);
+
+console.log(verdadero, falso, v, f);
+console.log(typeof verdadero, typeof falso);
+
+console.log(Boolean(0));
+console.log(Boolean(-7));
+console.log(Boolean(""));
+console.log(Boolean(" "));
+
+//Valores que siempre van a tender a verdadero
+// if (true)
+// if ({})
+// if ([])
+// if (42)
+// if ("foo")
+// if (new Date())
+// if (-42)
+// if (3.14)
+// if (-3.14)
+// if (Infinity)
+// if (-Infinity)
+
+//Valores que siempre van a tender a Falso
+
+// if (false)
+// if (null)
+// if (undefined)
+// if (0)
+// if (-0)
+// if (0n)
+// if (NaN)
+// if ("")
+
+//-------------------------------------------------->| Undefined, null & NaN |<--------------------------------------------------
+
+//Son casos particulares de js
+//Representan valores ausentes pero la diferencia es que undefined no ha sido inicializada y se lo asigna js y null lo asigna el usuario intencionalmente
+
+
+//Variable que no tiene valor
+let indefinida;
+console.log(indefinida);
+
+let nulo = null;
+console.log(nulo);
+
+//NaN -> Not a Number
+let noEsUnNumero = "hola"*3.7;
+console.log(noEsUnNumero);
+
+//-------------------------------------------------->| FUNCIONES |<--------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
