@@ -237,29 +237,83 @@ funcionExpresada()
 
 //-------------------------------------------------->| Arreglos(Arrays) |<--------------------------------------------------
 
+//En los tipos de datos como arreglos, funciones y objetos podemos utilizar CONST
+const a2 = [];
+const b2 = [1, true, "Hola", ["A", "B", "C", [1,2,3]]];
+console.log(a2);
+console.log(b2);
+console.log(b2.length);
+console.log(b2[2]);
+//Length te cuenta de 1 al total pero cuando buscamos un elemento el indice empieza en 0
+console.log(b2[3][3][0]);
+
+const c2 = Array.of("x", "y", "z", 9, 8, 7);
+console.log(c2);
+
+const D = Array(100).fill(false);
+console.log(D);
+
+//Metodo viejo no se usa esta forma
+// const D1 = new Array();
+
+const F = new Array(1,2,3,true,false);
+console.log(F);
+
+const colores1 = ["rojo", "verde", "Amarillo"];
+colores1.push("Negro")
+console.log(colores1);
+colores1.pop();
+console.log(colores1);
+
+colores1.forEach(function (elemento, index){
+    console.log(`<li id="${index}"> ${elemento}</li>`)
+})
+
+//-------------------------------------------------->| Object |<--------------------------------------------------
+
+const B2 = {};
+console.log(typeof B2);
+
+const C2 = new Object();
+console.log(typeof C2);
+
+const john = {
+    nombre: "John",
+    apellido: "MirCha",
+    edad: 35,
+    pasatiempos: ["Correr", "Hacer ejercicio", "Dar Clases"],
+    soltero: false,
+    contacto: {
+        email: "asdda@asdas.com",
+        twitter: "@asdwadw",
+        movil: "524569871135"
+    },
+    saludar: function(){
+        console.log("Hola :)")
+    },
+    decirMiNombre: function(){
+        console.log(`Hola Me llamo ${this.nombre} ${this.apellido} y tengo ${this.edad} años y me puese seguir como ${this.contacto.twitter}`)
+    }
+}
+
+//Dentro de un objeto a las variables se le van a llamar atributos y a las funciones se les llama metodos
+console.log(john);
+console.log(john["nombre"]);
+console.log(john["apellido"]);
+console.log(john.saludar());
+console.log(john.nombre);
+console.log(john.edad);
+console.log(john.soltero);
+console.log(john.pasatiempos[1]);
+console.log(john.contacto.email);
+console.log(john.contacto["movil"]);
+john.decirMiNombre();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+console.log(Object.keys(john));
+console.log(Object.values(john));
+console.log(john.hasOwnProperty("nombre"));
+console.log(john.hasOwnProperty("naciemiento"));
 
 
 
