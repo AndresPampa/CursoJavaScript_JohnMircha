@@ -1,7 +1,6 @@
-// ---------------------------------------------| REST & Operadores Spread |--------------------------------------------- //
+// ---------------------------------------------| ARROW FUNCTIONS |--------------------------------------------- //
 //Es una implementacion para mejorar como escribimos
 //Es una nueva forma de definir funciones anonima expresadas
-
 
 const saludar = function(){
     console.log(`Hola`);
@@ -44,6 +43,7 @@ function Perro (){
     console.log(this);
 }
 Perro();
+//Las arrows funcion capturan el objeto this. del contexto donde se encuentran
 
 const perro = {
     nombre: "Kenai",
