@@ -41,11 +41,3 @@ Perro.prototype.ladrar = function(){
 console.log(snoopy);
 //No estaria funcionando bien esto:
 // snoopy.saludar();
-
-
-
-
-
-
-
-
