@@ -14,7 +14,7 @@ console.log(fecha.getFullYear());
 console.log(fecha.getHours());
 console.log(fecha.getMinutes());
 console.log(fecha.getSeconds());
-console.log(fecha.getTime());
+console.log(fecha.getTime()); //Timestamp
 console.log(fecha.toString());
 console.log(fecha.toDateString());
 console.log(fecha.toLocaleDateString());
