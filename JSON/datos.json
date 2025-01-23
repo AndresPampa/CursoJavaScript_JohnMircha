@@ -1,0 +1,11 @@
+{
+    "cadena": "jon",
+    "numero": "35",
+    "boolean": "true",
+    "arreglo": ["programar", "viciar", "GYM"],
+    "objeto": {
+        "twitter": "@pampita",
+        "email": "PampaElMasPijudo@tuvieja.com"
+    },
+    "nulo": null
+}
