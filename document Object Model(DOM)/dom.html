@@ -4,6 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web APIs</title>
+    <style>
+        /* No deberia hacerse. No se ponene estilos en linea */
+        :root{
+            /* Para que las variiables esten en todo el scope. es como el HTML */
+            /* Todas las variables en CSS empiezan con "--"" */
+            --yellow-color:#F7DF1E;
+            --dark-color: #222;
+        }
+
+        .cards{
+            border: thin solid var(--dark-color);
+            padding: 1rem;
+        }
+
+        .card{
+            display: inline-block;
+            background-color: var(--dark-color);
+            color: var(--yellow-color);
+        }
+
+        .card figcaption{
+            padding: 1rem;
+        }
+
+        .rotate-45{
+            transform: rotate(45deg);
+        }
+
+        .rotate-135{
+            transform: rotate(135deg);
+        }
+
+        .opacity-80{
+            opacity: 8;
+        }
+
+        .sepia{
+            filter: sepia(1);
+        }
+
+    </style>
 </head>
 <body>
     <h1>WEB APIs</h1>
@@ -42,40 +83,47 @@
         </ul>
     </nav>
     <input type="text" name="nombre" placeholder="nombre">
-    <a class="link-dom" href="dom.html">DOM</a>
-    <section class="card">
-        <figure class="card">
-            <img src="http://fpoimg.com/200x200?text=Tech" alt="tech">
-            <figcaption>Tech</figcaption>
-        </figure>
-    </section>
-    <section class="card">
-        <figure class="card">
-            <img src="http://fpoimg.com/200x200?text=Animals" alt="Animals">
-            <figcaption>Animals</figcaption>
-        </figure>
-    </section>
-    <section class="card">
-        <figure class="card">
-            <img src="http://fpoimg.com/200x200?text=Arch" alt="Arch">
-            <figcaption>People</figcaption>
-        </figure>
-    </section>
-    <section class="card">
-        <figure class="card">
-            <img src="http://fpoimg.com/200x200?text=People" alt="People">
-            <figcaption>People</figcaption>
-        </figure>
-    </section>
-    <section class="card">
-        <figure class="card">
-            <img src="http://fpoimg.com/200x200?text=Nature" alt="Nature">
-            <figcaption>Nature</figcaption>
-        </figure>
+    <a class="link-dom" href="dom.html" style="background-color: #F7DF1e; color: #222;" data-description="document object model">DOM</a>
+    <section class="cards">
+        <section class="card">
+            <figure class="card">
+                <img src="http://fpoimg.com/200x200?text=Tech" alt="tech">
+                <figcaption>Tech</figcaption>
+            </figure>
+        </section>
+        <section class="card">
+            <figure class="card">
+                <img src="http://fpoimg.com/200x200?text=Animals" alt="Animals">
+                <figcaption>Animals</figcaption>
+            </figure>
+        </section>
+        <section class="card">
+            <figure class="card">
+                <img src="http://fpoimg.com/200x200?text=Arch" alt="Arch">
+                <figcaption>People</figcaption>
+            </figure>
+        </section>
+        <section class="card">
+            <figure class="card">
+                <img src="http://fpoimg.com/200x200?text=People" alt="People">
+                <figcaption>People</figcaption>
+            </figure>
+        </section>
+        <section class="card">
+            <figure class="card">
+                <img src="http://fpoimg.com/200x200?text=Nature" alt="Nature">
+                <figcaption>Nature</figcaption>
+            </figure>
+        </section>
     </section>
     <!-- <script src="./0-1 web apis.js"></script> -->
     <!-- <script src="./0-2 DOM introduccion.js"></script> -->
-     <script src="./0-3 Nodos, elementos y selectores.js"></script>
-
+    <!-- <script src="./0-3 Nodos, elementos y selectores.js"></script> -->
+    <!-- <script src="./0-4 Atributos & data-attributes.js"></script> -->
+    <!-- <script src="./0-5 Estilos y variables CSS.js"></script> -->
+    <!-- <script src="./0-6 Clases CSS.js"></script> -->
+    <!-- <script src="./0-7 texto y HTML.js"></script> -->
+    <!-- <script src="./0-8 Recorriendo el DOM.js"></script> -->
+     <script src="./0-9 Creando elementos y fragmanetos.js"></script>
 </body>
 </html>
