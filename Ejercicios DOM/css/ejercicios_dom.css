@@ -1,0 +1,147 @@
+/* -----------------------------|Reseto inicial - RESET CSS|-----------------------------*/
+:root{
+    --main-font:sans-serif;
+    --font-size:16px;
+    --main-color: #f7df1e;
+    --second-color: #222;
+    --main-modal-color: rgba(247, 222, 30, 0.85);
+    --second-modal-color: rgba(34, 34, 34, 0.85);
+    --container-width:1200px;
+}
+
+
+/* reseteo basico para html */
+html{
+    box-sizing: border-box;
+    font-family: var(--main-font);
+    font-size: var(--font-size);
+    /* Esta propiedad hace el efecto del scroll */
+    scroll-behavior: smooth;
+}
+
+/* Esto se hace para heredar..... NI IDEA... */
+*,
+*:before,
+*:after{
+    box-sizing: inherit;
+}
+
+body{
+    margin: 0;
+    overflow-x: hidden;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+header h1{
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* -----------------------------|Manu Hamburguesa|-----------------------------*/
+
+header{
+    /* Sticky hace como si estuviera fija */
+    position: sticky;
+    top: 0;
+    padding: 1rem;
+    background-color: var(--main-color);
+    color: var(--second-color);
+}
+
+
+.section{
+    padding: 2rem;
+    /* Para que la cabecera no se encime sobre el primer contenido */
+    padding-top: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: var(--container-width);
+    /* Ocupe el tamaño del view port */
+    min-height: 100vh;
+    text-align: center;
+}
+
+.panel{
+    position: fixed;
+    /* Por debajo del manu hamburguesa */
+    z-index: 998;
+    /* Con top 0 y bottom 0 lo estiramos en todas las direcciones, 
+    lo mismo con left y right */
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: var(--second-modal-color);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform .3s ease, opacity .5s ease;
+    /* Como quiero que se mueva en relacion de x e y */
+    /* de arriba */
+    /* transform: translate(0, -100%); */
+    /*  de abajo */
+    /* transform: translate(0,100%); */
+    /* De la derecha */
+    /* transform: translate(100%, 0); */
+    /* de la izquierda */
+    /* transform: translate(-100%, 0); */
+}
+
+/* Aca hacemos la trasnformacion */
+.panel.is-active{
+    transform: translate(0, 0);
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.panel-btn{
+    /* Posicionado de manera fija */
+    position: fixed;
+    /* Cuando cambiamos el posicionamiento 
+    que es estatico puedo jugar con el nivel de profundidad */
+    z-index: 999;
+    bottom: 1vh;
+    right: 1vw;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    padding: 0;
+    /* flex box */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--main-color);
+}
+
+.menu{
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+}
+
+.menu a {
+    padding: 2rem;
+    width: inherit;
+    display: block;
+    font-size: 1.5rem;
+    /* Linea de decoracion de los enlaces */
+    text-decoration: none;
+    color: var(--main-color);
+    transition: all 0.3s ease;
+}
+
+.menu a:hover {
+    font-weight: bold;
+    color: var(--second-color);
+    background-color: var(--main-modal-color);
+}
+
