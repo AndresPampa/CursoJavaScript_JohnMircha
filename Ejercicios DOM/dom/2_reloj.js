@@ -25,6 +25,33 @@ export function digitalClock(clock, btnPlay, btnStop){
 }
 
 
-export function alarm(){
+export function alarm(sound, btnPlay, btnStop){
+
+    let alarmTempo;
+    // Aunque no se vea tengo que crear la etiqueta para usar la API que reproduce el audio
+    const $alarm = d.createElement("audio")
+    $alarm.src = sound;
+
+    d.addEventListener("click", e=>{
+        if(e.target.matches(btnPlay)){
+            alarmTempo = setTimeout(() =>{
+                $alarm.play();
+            },2000)
+
+            e.target.disabled = true;
+        }
+
+        if(e.target.matches(btnStop)){
+            clearTimeout(alarmTempo);
+            //Paramos la alarma
+            $alarm.pause();
+            //La reiniciamos
+            $alarm.currentTime = 0;
+            
+            //Volvemos a poner funcional la alarma
+            d.querySelector(btnPlay).disabled = false;
+
+        }
+    })
 
 }
