@@ -194,6 +194,7 @@ header{
 }
 
 /* *************dark-theme Button************* */
+
 .dark-theme-btn{
     position: fixed;
     z-index: 999;
@@ -213,6 +214,11 @@ header{
 }
 
 .dark-theme-btn:hover{
+    background-color: var(--second-color);
+    color: var(--main-color);
+}
+
+.dark-mode{
     background-color: var(--second-color);
     color: var(--main-color);
 }
