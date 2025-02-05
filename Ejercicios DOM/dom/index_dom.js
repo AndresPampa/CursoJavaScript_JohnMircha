@@ -5,6 +5,7 @@ import countdown from "./4_cuenta_regresiva.js";
 import scrollTopButton from "./5_boton_scroll.js";
 import darkTheme from "./6_tema_oscuro.js";
 import responsiveMedia from "./7_responsive.js";
+import responsiveTester from "./8_responsive_tester.js";
 
 const d = document;
 
@@ -34,6 +35,8 @@ d.addEventListener("DOMContentLoaded", (e) =>{
                     `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d18694.200939994604!2d-84.08202480256774!3d9.936317672437612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e37caeec4097%3A0x2f5c8ecb40662d2!2sLa%20Concha%20de%20la%20Lora!5e0!3m2!1ses!2sar!4v1738357719549!5m2!1ses!2sar" 
                     // width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" 
                     // referrerpolicy="no-referrer-when-downgrade"></iframe>`);
+    
+    responsiveTester("responsive-tester");
 });
 
 //Keyup, keydown
