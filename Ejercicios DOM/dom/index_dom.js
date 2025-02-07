@@ -6,6 +6,7 @@ import scrollTopButton from "./5_boton_scroll.js";
 import darkTheme from "./6_tema_oscuro.js";
 import responsiveMedia from "./7_responsive.js";
 import responsiveTester from "./8_responsive_tester.js";
+import userDeviceInfo from "./9_deteccion_dispositivos.js";
 
 const d = document;
 
@@ -37,6 +38,8 @@ d.addEventListener("DOMContentLoaded", (e) =>{
                     // referrerpolicy="no-referrer-when-downgrade"></iframe>`);
     
     responsiveTester("responsive-tester");
+
+    userDeviceInfo("user-device");
 });
 
 //Keyup, keydown
