@@ -1,3 +1,4 @@
+import networkStatus from "./10_deteccion_red.js";
 import hamburgerMenu from "./1_menu_hamburguesa.js";
 import {alarm, digitalClock} from "./2_reloj.js";
 import { moveBall, shortcuts } from "./3_teclado.js";
@@ -40,6 +41,7 @@ d.addEventListener("DOMContentLoaded", (e) =>{
     responsiveTester("responsive-tester");
 
     userDeviceInfo("user-device");
+
 });
 
 //Keyup, keydown
@@ -52,6 +54,7 @@ d.addEventListener("keydown", e =>{
 
 // La invocamos afuera para que no se cancelen los DOMcontentLoad
 darkTheme(".dark-theme-btn", "dark-mode");
+networkStatus();
 
 
 
