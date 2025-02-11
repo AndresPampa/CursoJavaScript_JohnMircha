@@ -1,4 +1,5 @@
 import networkStatus from "./10_deteccion_red.js";
+import webCam from "./11_deteccion_camara_web.js";
 import hamburgerMenu from "./1_menu_hamburguesa.js";
 import {alarm, digitalClock} from "./2_reloj.js";
 import { moveBall, shortcuts } from "./3_teclado.js";
@@ -41,6 +42,8 @@ d.addEventListener("DOMContentLoaded", (e) =>{
     responsiveTester("responsive-tester");
 
     userDeviceInfo("user-device");
+
+    webCam("webcam");
 
 });
 
