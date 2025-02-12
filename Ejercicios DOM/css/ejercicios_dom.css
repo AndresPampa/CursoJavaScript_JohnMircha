@@ -81,6 +81,8 @@ header{
     opacity: 0;
     visibility: hidden;
     transition: transform .3s ease, opacity .5s ease;
+    /* Que hacemos con el contenido que desborda en y y sea automatico y se adapte al tamañan del contenido */
+    overflow-y: auto;
     /* Como quiero que se mueva en relacion de x e y */
     /* de arriba */
     /* transform: translate(0, -100%); */
@@ -239,4 +241,30 @@ header{
 
 .offline{
     background-color: #b71c1c;
+}
+
+/* *************Search Filters************* */
+.cards{
+    display: grid;
+    /* Dependiendo cuantas columnas tiene se van a ir acomodando y ajustando */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.card{
+    background-color: var(--second-color);
+    color: var(--main-color);
+    transition: all 0.3s ease-out;
+}
+
+.card img{
+    width: 100%;
+    height: auto;
+}
+
+.card figcaption{
+    padding: 1rem;
+}
+
+.filter{
+    display: none;
 }

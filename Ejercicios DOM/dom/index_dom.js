@@ -1,5 +1,6 @@
 import networkStatus from "./10_deteccion_red.js";
 import webCam from "./11_deteccion_camara_web.js";
+import getGeolocation from "./12_geolocalizacion.js";
 import hamburgerMenu from "./1_menu_hamburguesa.js";
 import {alarm, digitalClock} from "./2_reloj.js";
 import { moveBall, shortcuts } from "./3_teclado.js";
@@ -44,6 +45,8 @@ d.addEventListener("DOMContentLoaded", (e) =>{
     userDeviceInfo("user-device");
 
     webCam("webcam");
+    
+    getGeolocation("geolocation");
 
 });
 

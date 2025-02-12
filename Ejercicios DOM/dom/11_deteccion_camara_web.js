@@ -14,7 +14,7 @@ export default function webCam(id){
                                 // console.log(stream);
                                 // srcObject mando la fuente pero a manera de objeto.
                                 $video.srcObject = stream; //Solo toma una fotografia y se queda por eso agregamos el metodo play() abajo
-                                $video.play()
+                                // $video.play() //Descomentar para ver la toma de la camara
                             })
                             .catch(err =>{
                                 $video.insertAdjacentHTML("beforebegin", `<p><mark>${err}<mark/><p/>`);
