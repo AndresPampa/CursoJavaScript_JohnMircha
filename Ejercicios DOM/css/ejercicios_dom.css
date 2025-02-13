@@ -266,5 +266,10 @@ header{
 }
 
 .filter{
-    display: none;
+    /* Esta propiedad no es animable */
+    /* display: none; */
+    visibility: hidden;
+    opacity: 0;
+    /* Cuando trabajamos con display grid hay una propiedad order que los acomoda a medida que se esconden */
+    order: 1;
 }
