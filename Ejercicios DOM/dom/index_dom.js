@@ -3,6 +3,8 @@ import webCam from "./11_deteccion_camara_web.js";
 import getGeolocation from "./12_geolocalizacion.js";
 import searchFilters from "./13_filtro_busquedas.js";
 import draw from "./14_sorteo.js";
+import slider from "./15_carrusel.js";
+import scrollSpy from "./16_scroll_spy.js";
 import hamburgerMenu from "./1_menu_hamburguesa.js";
 import {alarm, digitalClock} from "./2_reloj.js";
 import { moveBall, shortcuts } from "./3_teclado.js";
@@ -53,6 +55,10 @@ d.addEventListener("DOMContentLoaded", (e) =>{
     searchFilters(".card-filter", ".card");
 
     draw(".winner-btn", ".player");
+
+    slider();//No va a recibir nungun parametro
+
+    scrollSpy();
 
 });
 
