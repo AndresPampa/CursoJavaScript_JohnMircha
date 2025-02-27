@@ -6,6 +6,7 @@ import draw from "./14_sorteo.js";
 import slider from "./15_carrusel.js";
 import scrollSpy from "./16_scroll_spy.js";
 import smartVideo from "./17_video_inteligente.js";
+import contactFormValidation from "./18_validaciones_formulario.js";
 import hamburgerMenu from "./1_menu_hamburguesa.js";
 import {alarm, digitalClock} from "./2_reloj.js";
 import { moveBall, shortcuts } from "./3_teclado.js";
@@ -62,6 +63,8 @@ d.addEventListener("DOMContentLoaded", (e) =>{
     scrollSpy();
 
     smartVideo();
+
+    contactFormValidation();
 
 });
 
