@@ -44,4 +44,32 @@ export default function contactFormValidation(){
         }
     });
 
+
+    d.addEventListener("submit", (e) =>{
+        //Controlamos la accion por default
+        // e.preventDefault();
+        alert("Enviando formulario");
+
+        const $loader = d.querySelector(".contact-form-loader"),
+              $response = d.querySelector(".contact-form-response");
+        
+        $loader.classList.remove("none");
+
+        setTimeout(() =>{
+            $loader.classList.add("none");
+            $response.classList.remove("none");
+            //Para que el fomrulario se limpie reseteamos
+            $form.reset();
+
+            //Volvemos agregar la clase none para que desaparezca el mensaje
+            setTimeout(()=>{$response.classList.add("none")},3000)
+
+        }, 3000)
+
+        
+
+    });
+
+
+
 };
