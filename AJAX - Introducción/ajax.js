@@ -1,4 +1,5 @@
 //Funcion anonima autoejecutable
+//XMLHttpRequest
 (() =>{
     //1 - Creamos una instancia de XMLHttpRequest 
     const xhr = new XMLHttpRequest();
@@ -53,5 +54,38 @@
 
     //4 - Enviamos la peticion
     xhr.send();
+
+})();
+
+//Fetch
+(()=>{
+    const $fetch = document.getElementById("fetch");
+    const $fragment = document.createDocumentFragment();
+
+    //Funciona con apis internas y externas y devuelve una promesa
+    //El metodo fetch recibe 2 parametros, el primero es la url y el segundo es un objeto con la configuracion
+    fetch("https://jsonplaceholder.typicode.com/users", {
+        method:"GET" //Por defecto es GET
+    }).then(res =>{
+        // console.log(res);
+        return res.ok ? res.json() : Promise.reject(res);
+    }).then(json =>{
+        // console.log(json);
+        json.forEach(el => {
+            const $li = document.createElement("li");
+            $li.innerHTML = `${el.name} -/- ${el.email} -/- ${el.phone}`;
+            $fragment.appendChild($li);
+        });
+
+        $fetch.appendChild($fragment);
+
+    }).catch(err =>{
+        // console.log(err);
+        let message = err.statusText || "Ocurrio un error";
+        $fetch.innerHTML = `Error ${err.status}: ${message}`;
+    }).finally(()=>{
+        // console.log("Esto se ejecuta siempre al final"); //El finally es opcional
+    });
+
 
 })();
