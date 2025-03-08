@@ -1,5 +1,5 @@
 //Funcion anonima autoejecutable
-//XMLHttpRequest
+//---------------------------------------------- | XMLHttpRequest | ----------------------------------------------
 (() =>{
     //1 - Creamos una instancia de XMLHttpRequest 
     const xhr = new XMLHttpRequest();
@@ -57,7 +57,7 @@
 
 })();
 
-//Fetch
+//----------------------------------------------| Fetch | ----------------------------------------------
 (()=>{
     const $fetch = document.getElementById("fetch");
     const $fragment = document.createDocumentFragment();
@@ -87,5 +87,43 @@
         // console.log("Esto se ejecuta siempre al final"); //El finally es opcional
     });
 
+
+})();
+
+//----------------------------------------------| Fetch con async await | ----------------------------------------------
+
+(()=>{
+    const $fetchAsync = document.getElementById("fetch-async");
+    const $fragment = document.createDocumentFragment();
+
+    async function getData(){
+        try{
+            let res = await fetch("https://jsonplaceholder.typicode.com/user");
+            let json = await res.json();
+
+            // console.log(json, res);
+            
+            //Manejamos el error
+            if(res.ok === false) throw {status: res.status, statusText: res.statusText};
+
+            json.forEach(el => {
+                const $li = document.createElement("li");
+                $li.innerHTML = `${el.name} -/- ${el.email} -/- ${el.phone}`;
+                $fragment.appendChild($li);
+            });
+
+            $fetchAsync.appendChild($fragment);
+
+        }catch(err){
+            console.log("Estoy en el catch: ",err);
+            let message = err.statusText || "Ocurrio un error";
+            $fetchAsync.innerHTML = `Error ${err.status}: ${message}`;
+        }finally{
+            console.log("Esto se ejecuta siempre");
+        }
+        
+    }
+
+    getData();
 
 })();
