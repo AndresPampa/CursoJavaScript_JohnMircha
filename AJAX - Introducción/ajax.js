@@ -98,11 +98,11 @@
 
     async function getData(){
         try{
-            let res = await fetch("https://jsonplaceholder.typicode.com/user");
+            let res = await fetch("https://jsonplaceholder.typicode.com/users");
             let json = await res.json();
 
             // console.log(json, res);
-            
+
             //Manejamos el error
             if(res.ok === false) throw {status: res.status, statusText: res.statusText};
 
@@ -119,7 +119,7 @@
             let message = err.statusText || "Ocurrio un error";
             $fetchAsync.innerHTML = `Error ${err.status}: ${message}`;
         }finally{
-            console.log("Esto se ejecuta siempre");
+            // console.log("Esto se ejecuta siempre");
         }
         
     }
@@ -127,3 +127,64 @@
     getData();
 
 })();
+
+//----------------------------------------------| Axios | ----------------------------------------------
+
+(()=>{
+    const $axios = document.getElementById("axios");
+    const $fragment = document.createDocumentFragment();
+
+    axios.get("https://jsonplaceholder.typicode.com/users")
+    .then(res =>{
+        // console.log(res);
+
+        res.data.forEach(el => {
+            const $li = document.createElement("li");
+            $li.innerHTML = `${el.name} -/- ${el.email} -/- ${el.phone}`;
+            $fragment.appendChild($li);
+        });
+
+        $axios.appendChild($fragment);
+    })
+    .catch(err =>{
+        // console.log(err.response);
+        let message = err.response.statusText || "Ocurrio un error";
+        $axios.innerHTML = `Error ${err.response.status}: ${message}`;
+    })
+    // .finally(()=>{console.log("Esto se eejecutara siempre")});
+
+})(); //<-- NO olvidar nunca los semicolon
+
+//----------------------------------------------| Axios + Async Await | ----------------------------------------------
+
+(()=>{
+
+    const $axiosAsync = document.getElementById("axios-async");
+    const $fragment = document.createDocumentFragment();
+
+    async function getData(){
+        try{
+            let res = await axios.get("https://jsonplaceholder.typicode.com/users");
+            let json = res.data; //No hace falta el await aca
+            // console.log(res, json);
+
+            res.data.forEach(el => {
+                const $li = document.createElement("li");
+                $li.innerHTML = `${el.name} -/- ${el.email} -/- ${el.phone}`;
+                $fragment.appendChild($li);
+            });
+
+            $axiosAsync.appendChild($fragment);
+
+        }catch(err){
+            console.log(err.response);
+            let message = err.response.statusText || "Ocurrio un error";
+            $axiosAsync.innerHTML = `Error ${err.response.status}: ${message}`;
+        }finally{
+            // console.log("Esto se ejecutara siempre");
+        }
+    }
+
+    getData();
+
+})()
