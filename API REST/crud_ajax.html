@@ -49,7 +49,7 @@
         const $table = d.querySelector(".crud-table");
         const $form = d.querySelector(".crud-form");
         const $title = d.querySelector(".crud-title");
-        const $tamplate = d.getElementById("crud-template").content;
+        const $template = d.getElementById("crud-template").content;
         const $fragment = d.createDocumentFragment();
 
         // Paso 1
@@ -85,15 +85,15 @@
                 success: (res)=>{
                     console.log(res);
                     res.forEach(el => {
-                        $tamplate.querySelector(".name").textContent = el.nombre;
-                        $tamplate.querySelector(".constellation").textContent = el.constelacion;
-                        $tamplate.querySelector(".edit").dataset.id = el.id;
-                        $tamplate.querySelector(".edit").dataset.name = el.nombre;
-                        $tamplate.querySelector(".edit").dataset.constellation = el.constelacion;
-                        $tamplate.querySelector(".delete").dataset.id = el.id;
+                        $template.querySelector(".name").textContent = el.nombre;
+                        $template.querySelector(".constellation").textContent = el.constelacion;
+                        $template.querySelector(".edit").dataset.id = el.id;
+                        $template.querySelector(".edit").dataset.name = el.nombre;
+                        $template.querySelector(".edit").dataset.constellation = el.constelacion;
+                        $template.querySelector(".delete").dataset.id = el.id;
 
                         //Clonar el template <----------------------- para que se clona????
-                        let $clone = d.importNode($tamplate, true);
+                        let $clone = d.importNode($template, true);
                         $fragment.appendChild($clone);
                     });
 
