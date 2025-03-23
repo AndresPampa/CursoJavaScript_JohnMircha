@@ -26,7 +26,7 @@
       "constelacion": "Fenix"
     },
     {
-      "nombre": "Dohkito",
+      "nombre": "Dohko",
       "constelacion": "Libra",
       "id": "84c0"
     },
@@ -44,6 +44,11 @@
       "id": "926b",
       "nombre": "Shaka",
       "constelacion": "Virgo"
+    },
+    {
+      "id": "e24e",
+      "nombre": "Mascara de Muerte",
+      "constelacion": "Cancer"
     }
   ],
   "dioses": [
