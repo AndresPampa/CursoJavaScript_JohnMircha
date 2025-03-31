@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uploader con AJAX</title>
+    <style>
+
+        html{
+            box-sizing: border-box;
+            font-family: sans-serif;
+            font-size: 16px;
+        }
+
+        *,
+        *:before,
+        *:after{
+            box-sizing: inherit;
+        }
+
+        main{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 100vh;
+        }
+
+
+    </style>
+</head>
+<body>
+    <main>
+        <!-- Con el parametro multiple especificamos que puede subir mas que un archivo -->
+        <input type="file" id="files" name="files" multiple>
+    </main>
+    <script>
+        const d = document;
+        const $main = d.querySelector("main");
+        const $files = d.getElementById("files");
+
+        const uploader = (file) => {
+            // console.log(file);
+            const xhr = new XMLHttpRequest();
+            const formData = new FormData(); // Objeto que permite enviar datos a traves de AJAX
+            formData.append("file", file);
+
+            xhr.addEventListener("readystatechange", e =>{
+                if(xhr.readyState !== 4) return;
+
+                if(xhr.status >= 200 && xhr.status < 300){
+                    let json = JSON.parse(xhr.responseText);
+                    console,log(json);
+                }else{
+                    let message = xhr.statusText || "Ocurrio un error";
+                    console.log(`Error: ${xhr.status}: ${message}`)
+                }
+            });
+
+            xhr.open("POST", "assets/uploader.php");
+            xhr.setRequestHeader("enc-type", "multipart/form-data");//Tiene que llevar esta cabecera para decirle que estamos recibiendo archivos
+            xhr.send(formData); // Enviamos el objeto FormData con el archivo
+        }
+
+        d.addEventListener("change", e =>{
+            if(e.target === $files){
+                console.log(e.target.files);
+
+                //Primera forma de convertir a un arreglo
+                const files = Array.from(e.target.files);
+                //Segundo metodo
+                // const filesArray = [...files]; // Convertimos el objeto FileList a un array
+
+                files.forEach(el => uploader(el));
+
+            }
+        });
+
+
+    </script>
+</body>
+</html>
