@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uploader con AJAX</title>
+    <title>Uploader Drag And Drop con AJAX</title>
     <style>
 
         html{
@@ -35,18 +35,49 @@
             margin: 0;
         }
 
+        .drop-zone{
+            margin-left: auto;
+            margin-right: auto;
+            border: thin dotted #000;
+            width: 80%;
+            height: 40vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .drop-zone.is-active{
+            border: thick dashed #000;
+            background-color: rgba(0, 128, 0, 5);
+            animation: pulse 1.5s infinite;
+            animation-timing-function: linear;
+        }
+
+        @keyframes pulse{
+            0%,
+            100%{
+                transform: scale(1);
+            }
+
+            50%{
+                transform: scale(1.1);
+            }
+        }
+
 
     </style>
 </head>
 <body>
     <main>
-        <!-- Con el parametro multiple especificamos que puede subir mas que un archivo -->
-        <input type="file" id="files" name="files" multiple>
+        <articlle class="drop-zone">
+            <p>Arrastra y suelta tus archivos...</p>
+        </articlle>
     </main>
     <script>
         const d = document;
         const $main = d.querySelector("main");
-        const $files = d.getElementById("files");
+        const $dropZone = d.querySelector(".drop-zone");
 
         const uploader = (file) => {
             // console.log(file);
@@ -96,23 +127,26 @@
                 setTimeout(()=>{
                     $main.removeChild($progress);
                     $main.removeChild($span);
-                    $files.value = "";
                 }, 3000);
             });
         }
 
-        d.addEventListener("change", e =>{
-            if(e.target === $files){
-                console.log(e.target.files);
-
-                //Primera forma de convertir a un arreglo
-                const files = Array.from(e.target.files);
-                //Segundo metodo
-                // const filesArray = [...files]; // Convertimos el objeto FileList a un array
-
-                files.forEach(el => progressUpload(el));
-
-            }
+        $dropZone.addEventListener("dragover", e =>{
+            e.preventDefault(); // Evitamos el comportamiento por defecto del navegador
+            e.stopPropagation(); // Evitamos que el evento se propague a otros elementos
+            e.target.classList.add("is-active"); // Añadimos la clase is-active al dropzone
+        });
+        $dropZone.addEventListener("dragleave", e =>{
+            e.preventDefault(); // Evitamos el comportamiento por defecto del navegador
+            e.stopPropagation(); // Evitamos que el evento se propague a otros elementos
+            e.target.classList.remove("is-active"); // Añadimos la clase is-active al dropzone
+        });
+        $dropZone.addEventListener("drop", e =>{
+            e.preventDefault();
+            e.stopPropagation();
+            const files = Array.from(e.dataTransfer.files);
+            files.forEach(el =>{progressUpload(el)});
+            e.target.classList.remove("is-active");
         });
 
 
