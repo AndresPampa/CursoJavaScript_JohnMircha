@@ -10,9 +10,11 @@ const d = document,
         headers:{
             Authorization: `bearer ${STRIPE_KEYS.secret}`
         }
-    }
+    };
 
 let products, prices;
+
+const moneyFormat = (num) =>`$${num.slice(0, -2)}.${num.slice(-2)}`; //Funcion que me formatea el price o dinero
 
 Promise.all([
     fetch("https://api.stripe.com/v1/products", fetchOptions),
@@ -34,7 +36,7 @@ Promise.all([
         $template.querySelector("figcaption").innerHTML = `
             ${productData[0].name}
             <br>
-            ${el.unit_amount_decimal} ${el.currency.toUpperCase()}`
+            ${moneyFormat(el.unit_amount_decimal)} ${el.currency.toUpperCase()}`
 
         let $clone = d.importNode($template, true);
         $fragment.appendChild($clone);
@@ -74,3 +76,24 @@ Promise.all([
 //         });
 
 
+d.addEventListener("click", (e) =>{
+    // console.log(e.target);
+    if(e.target.matches(".taco *")){
+        // alert("A comprar!!");
+        let price = e.target.parentElement.getAttribute("data-price");
+        console.log(price);
+        Stripe(STRIPE_KEYS.public).redirectToCheckout({
+            lineItems:[{price: price, quantity: 1}],
+            mode: "subscription",
+            successUrl: "http://127.0.0.1:5500/ejercicios-ajax/assets/stripe-success.html",
+            // cancelUrl: "https://example.com/cancel",
+        })
+        .then(res =>{
+            console.log(res)
+            if(res.error){
+                // console.log(res.error);
+                $tacos.insertAdjacentHTML("afterend", res.error.message);
+            }
+        })
+    }
+});
