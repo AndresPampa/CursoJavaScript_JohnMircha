@@ -7,14 +7,98 @@
 </head>
 <body>
     <h1>WordPress API REST</h1>
+    <article id="site" class="site"></article>
+    <section id="post" class="post"></section>
+    <img src="../Ejercicios DOM/assets/spinning-circles.svg" alt="Cargando..." class="loader">
+    <template id="post-template">
+        <article class="post">
+            <img src="" alt="" class="post-image">
+            <aside>
+                <h2 class="post-title"></h2>
+                <figure class="post-author"></figure>
+                <small class="post-date"></small>
+                <a class="post-link" target="_blank">Ver Publicacion Original</a>
+                <p class="post-excerpt"></p>
+                <div class="post-categories"></div>
+                <div class="post-tags"></div>
+                <details class="post-content">
+                    <summary>Ver Contenido de la Publicacion</summary>
+                    <article></article>
+                </details>
+            </aside>
+        </article>
+        <hr>
+    </template>
     <script>
-        const d = document;
-        fetch("https://malvestida.com/wp-json/wp/v2/posts") 
-            .then(res => res.ok ? res.json() : Promise.reject(res))
-            .then(json =>{
-                console.log(json);
-            })
-            .catch(err => {console.log(err)})
+        const d = document,
+              $site = d.getElementById("site"),
+              $post = d.getElementById("post"),
+              $loader = d.querySelector(".loader"),
+              $template = d.getElementById("post-template").content,
+              $fragment = d.createDocumentFragment(),
+              DOMAIN = "https://malvestida.com",
+              SITE = `${DOMAIN}/wp-json`,
+              API_WP = `${SITE}/wp/v2`,
+              POST = `${API_WP}/posts`,
+              PAGES = `${API_WP}/pages`,
+              CATEGORIES = `${API_WP}/categories`;
+
+        function getSiteData(){
+            fetch(SITE)
+                .then(res => res.ok ? res.json() : Promise.resject(res))
+                .then(json =>{
+                    console.log(json);
+                    $site.innerHTML = `
+                        <h3>Sitio Web</h3>
+                        <h2>
+                            <a href="${json.url}" target="_blank">${json.name}</a>
+                        </h2>
+                        <p>${json.description}</p>
+                        <p>${json.timezone_string}</p>
+                    `
+                })
+                .catch(err =>{
+                    console.log(err);
+                    let message = err.statusText || "Ocurrio un error";
+                    $site.innerHTML = `<p><b>Error: ${err.status}: ${message}</b></p>`;
+                })
+        }
+
+        function getPosts(){
+            $loader.style.display = "block";
+
+            fetch(POST)
+                .then(res => res.ok ? res.json() : Promise.resject(res))
+                .then(json =>{
+                    console.log(json);
+                    json.forEach(el =>{
+                        $template.querySelector(".post-title").innerHTML = el.title.rendered;
+
+                        
+
+                        let $clone = d.importNode($template, true);
+                        $fragment.appendChild($clone);
+                    })
+                    $post.appendChild($fragment);
+
+                    $loader.style.display = "none";
+                })
+                .catch(err =>{
+                    console.log(err);
+                    let message = err.statusText || "Ocurrio un error";
+                    $post.innerHTML = `<p><b>Error: ${err.status}: ${message}</b></p>`;
+                    $loader.style.display = "none";
+                })
+        }
+
+
+        d.addEventListener("DOMContentLoaded", e =>{
+            $loader.style.display = "block";
+            getSiteData();
+            getPosts();
+        })
+
     </script>
+    
 </body>
 </html>
