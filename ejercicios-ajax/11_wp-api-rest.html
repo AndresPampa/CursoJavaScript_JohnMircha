@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WordPress API Rest</title>
+    <style>
+        .loader{
+            display: none;
+            margin: 2rem auto;
+        }
+    </style>
 </head>
 <body>
     <h1>WordPress API REST</h1>
@@ -39,7 +45,7 @@
               DOMAIN = "https://malvestida.com",
               SITE = `${DOMAIN}/wp-json`,
               API_WP = `${SITE}/wp/v2`,
-              POST = `${API_WP}/posts`,
+              POST = `${API_WP}/posts?_embed`, //?_embed para obtener mas datos del endpoint
               PAGES = `${API_WP}/pages`,
               CATEGORIES = `${API_WP}/categories`;
 
@@ -72,15 +78,16 @@
                 .then(json =>{
                     console.log(json);
                     json.forEach(el =>{
+                        $template.querySelector(".post-image").src = el._embedded["wp:featuredmedia"][0].source_url;
+                        $template.querySelector(".post-image").alt = el.title.rendered;
                         $template.querySelector(".post-title").innerHTML = el.title.rendered;
-
                         
 
                         let $clone = d.importNode($template, true);
                         $fragment.appendChild($clone);
                     })
-                    $post.appendChild($fragment);
 
+                    $post.appendChild($fragment);
                     $loader.style.display = "none";
                 })
                 .catch(err =>{
