@@ -1,10 +1,8 @@
-import api from './helpers/wp_api.js';
-import {ajax} from './helpers/ajax.js'; //Utilizo la destructuracion porque no utilice la exportacion por default
 import {Title} from './components/Title.js';
 import { Loader } from './components/Loader.js';
 import { Header } from './components/Header.js';
 import { Posts } from './components/Posts.js';
-import { PostCard } from './components/PostCard.js';
+import { Router } from './components/Router.js';
 
 
 export function App(){
@@ -15,23 +13,6 @@ export function App(){
     $root.appendChild(Posts());
     $root.appendChild(Loader());
 
-    ajax({
-        url: api.POSTS,
-        cbSuccess: (posts) =>{
-            console.log(posts);
+    Router(); //Aca llamo a la funcion router, que es la que va a manejar las peticiones a la API y el enrutamiento de la SPA
 
-            let html = "";
-            posts.forEach(post => {html += PostCard(post)});
-            d.querySelector(".loader").computedStyleMap.display = "none";
-            d.getElementById("posts").innerHTML = html;
-        }
-    })
-
-    //Prueba de error
-    // ajax({
-    //     url: "tuviejaentanga",
-    //     cbSuccess: (post) =>{
-    //         console.log(post);
-    //     }
-    // })
 }
