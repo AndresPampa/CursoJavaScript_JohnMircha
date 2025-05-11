@@ -1,6 +1,7 @@
 import api from '../helpers/wp_api.js';
 import { ajax } from '../helpers/ajax.js';
 import { PostCard } from './PostCard.js';
+import { Post } from './Post.js';
 
 
 export async function Router(){
@@ -10,7 +11,7 @@ export async function Router(){
     const $main = d.getElementById("main");
 
     let {hash} = location;
-    console.log(hash);
+    // console.log(hash);
 
     $main.innerHTML = null; //Limpiamos el contenedor de posts para que no se repitan los posts al cambiar de hash
 
@@ -33,8 +34,17 @@ export async function Router(){
         $main.innerHTML = `<h2>Seccion de Contacto</h2>`;
         // d.querySelector(".loader").style.display = "none";<---- Funciona pero es mala practica
     }else{
-        $main.innerHTML = `<h2>Aqui Cargara el contenido del Post Previamente seleccionado</h2>`;
+        // $main.innerHTML = `<h2>Aqui Cargara el contenido del Post Previamente seleccionado</h2>`;
         // d.querySelector(".loader").style.display = "none";<---- Funciona pero es mala practica
+        // console.log(`${api.POSTS}/${localStorage.getItem("wpPostId")}`);
+
+        await ajax({
+            url: `${api.POST}/${localStorage.getItem("wpPostId")}`,
+            cbSuccess: (post) =>{
+                // console.log(post);
+                $main.innerHTML = Post(post); //Aca estoy llamando a la funcion post, que me devuelve un h1 y lo agregamos al root
+            }
+        });
     }
 
     d.querySelector(".loader").style.display = "none";
