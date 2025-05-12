@@ -2,6 +2,7 @@ import api from '../helpers/wp_api.js';
 import { ajax } from '../helpers/ajax.js';
 import { PostCard } from './PostCard.js';
 import { Post } from './Post.js';
+import { SearhCard } from './SearchCard.js';
 
 
 export async function Router(){
@@ -28,8 +29,36 @@ export async function Router(){
     });
 
     }else if(hash.includes("#/search")){
-        $main.innerHTML = `<h2>Seccion del Buscador</h2>`;
         // d.querySelector(".loader").style.display = "none"; <---- Funciona pero es mala practica
+        let query = localStorage.getItem("wpSearch");
+
+        if(!query) {
+            d.querySelector(".loader").style.display = "none";
+            return false;
+        }
+
+        await ajax({
+            url:`${api.SEARCH}${query}`,
+            cbSuccess: (search) =>{
+                console.log(search);
+                let html = "";
+                if(search.length === 0){
+                    html = `
+                    <p class="error">
+                        No existe resultados de busqueda para el termino
+                        <mark>${query}</mark>
+                    </p>
+                    `;
+
+                }else{
+                    search.forEach((post) => {html += SearhCard(post)});
+                }
+
+                $main.innerHTML = html;
+            }
+        });
+
+
     }else if(hash === "#/contacto"){
         $main.innerHTML = `<h2>Seccion de Contacto</h2>`;
         // d.querySelector(".loader").style.display = "none";<---- Funciona pero es mala practica
