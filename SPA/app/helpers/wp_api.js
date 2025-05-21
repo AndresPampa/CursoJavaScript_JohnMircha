@@ -5,10 +5,13 @@ const NAME = "malvestida",
       DOMAIN = `https://${NAME}.com`,
       SITE = `${DOMAIN}/wp-json`,
       API_WP = `${SITE}/wp/v2`,
-      POSTS = `${API_WP}/posts?_embed`,
+      PER_PAGE = 10,
+      POSTS = `${API_WP}/posts?_embed&per_page=${PER_PAGE}`,//Indecarle cuantas paginas quiero que me devuelva
       POST = `${API_WP}/posts`,
-      SEARCH = `${API_WP}/search?_embed&search=`,
-      CATEGORIES = `${API_WP}/categories`;
+      SEARCH = `${API_WP}/search?_embed&per_page=${PER_PAGE}&search=`;
+    //   CATEGORIES = `${API_WP}/categories`;
+
+let page = 1;
 
 //Si el nombre del parametro es igual al nombre de la variable, 
 // no hace falta poner el nombre de la variable, solo el nombre del parametro. Puedo hacer esa simplificacion
@@ -17,10 +20,12 @@ export default {
     DOMAIN,
     SITE,
     API_WP,
+    PER_PAGE,
     POSTS,
     POST,
     SEARCH,
-    CATEGORIES
+    page,
+    // CATEGORIES
 }
 
 

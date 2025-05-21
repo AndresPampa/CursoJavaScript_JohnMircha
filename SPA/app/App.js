@@ -3,6 +3,7 @@ import { Loader } from './components/Loader.js';
 import { Header } from './components/Header.js';
 import { Main } from './components/Main.js';
 import { Router } from './components/Router.js';
+import { infiniteScroll } from './helpers/infinite_scroll.js';
 
 
 export function App(){
@@ -16,5 +17,7 @@ export function App(){
     $root.appendChild(Loader());
 
     Router(); //Aca llamo a la funcion router, que es la que va a manejar las peticiones a la API y el enrutamiento de la SPA
+
+    infiniteScroll();
 
 }
