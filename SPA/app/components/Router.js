@@ -3,6 +3,7 @@ import { ajax } from '../helpers/ajax.js';
 import { PostCard } from './PostCard.js';
 import { Post } from './Post.js';
 import { SearhCard } from './SearchCard.js';
+import { CotactForm } from './contactForm.js';
 
 
 export async function Router(){
@@ -60,7 +61,7 @@ export async function Router(){
 
 
     }else if(hash === "#/contacto"){
-        $main.innerHTML = `<h2>Seccion de Contacto</h2>`;
+        $main.appendChild(CotactForm());
         // d.querySelector(".loader").style.display = "none";<---- Funciona pero es mala practica
     }else{
         // $main.innerHTML = `<h2>Aqui Cargara el contenido del Post Previamente seleccionado</h2>`;
