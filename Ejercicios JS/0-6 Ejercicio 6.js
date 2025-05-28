@@ -75,6 +75,6 @@ const validarMail = (email) => {
 
 }
 
-validarMail("andrespampa@gmail.com");
+validarMail("mail@mail.com");
 validarMail("tu.vieja@gmail.com");
 
